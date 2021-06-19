@@ -8,6 +8,20 @@ Created the boilerplate with `npx create-react-app`
 - Create a folder `lib` inside `src` that stores everything I am to publish on npm.
   - Create `components` folder inside `lib` where component elements resides and `index.js` to export them
 
+My Component `MyForm`
+
+```javascript
+const MyForm = () => {
+  return (
+    <form>
+      <h1>Hello</h1>
+      <p>Enter your name:</p>
+      <input type="text" />
+    </form>
+  );
+};
+```
+
 ### Install Babel and build the dist folder
 
 - To install Babel, run the following in the CLI:
@@ -70,6 +84,9 @@ Now do `npm login` and then do `npm publish`
 - Now by including `tushar-try` library in any project , you can use the components that are exported in `src/lib/index.js`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Do `npm install tushar-try` in any project and
+You can use `MyForm` component from `tushar-try` package using ` import {MyForm} from tushar-try`
 
 ## Available Scripts
 

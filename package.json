@@ -2,7 +2,7 @@
   "name": "tushar-try",
   "description": "Basic Form React Component",
   "author": "Tushar Goyal",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -11,8 +11,8 @@
     "README.md"
   ],
   "repository": {
-    "type": "git"
-    "url": "git+"
+    "type": "git",
+    "url": "git+https://github.com/tushargoyal22/publish-component.git"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
