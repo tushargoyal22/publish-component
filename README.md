@@ -1,4 +1,73 @@
-# Getting Started with Create React App
+# Publish React components as an npm package
+
+Created the boilerplate with `npx create-react-app`
+
+## Procedure
+
+- Delete everything besides `App.js` and `index.js`
+- Create a folder `lib` inside `src` that stores everything I am to publish on npm.
+  - Create `components` folder inside `lib` where component elements resides and `index.js` to export them
+
+### Install Babel and build the dist folder
+
+- To install Babel, run the following in the CLI:
+
+```
+npm install --save-dev @babel/core @babel/cli @babel/preset-env
+npm install -save @babel/polyfill
+```
+
+In the top-level folder of your project, add a file called babel.config.json and add the following presets:
+
+```
+{
+ "presets": [
+  [
+   "@babel/env",
+    {
+     "targets": {
+     "edge": "17",
+     "firefox": "60",
+     "chrome": "67",
+     "safari": "11.1"
+      },
+   "useBuiltIns": "usage",
+   "corejs": "3.6.5"
+    }
+],
+   "@babel/preset-react"
+]
+}
+```
+
+@babel/env tells the browser which versions it should target, and @babel/preset-react allows Babel to compile JSX.
+
+In package.json , under scripts, replace the build script with the following:
+`"build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"`
+
+Alter the `package.json`
+
+```
+  "name": "tushar-try",
+  "description": "Basic Form React Component",
+  "author": "Tushar Goyal",
+  "version": "0.1.0",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git"
+  },
+
+```
+
+Now do `npm login` and then do `npm publish`
+
+- Now by including `tushar-try` library in any project , you can use the components that are exported in `src/lib/index.js`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -10,61 +79,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
